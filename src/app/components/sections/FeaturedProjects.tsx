@@ -1,10 +1,12 @@
-import { projects } from '@/app/lib/Projects';
+// app/components/sections/FeaturedProjects.tsx
+import { getAllProjects } from '@/app/lib/getProjects';
 import ProjectCard from '@/app/components/projects/ProjectCard';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-const FeaturedProjects = () => {
-  const featuredProjects = projects.filter(project => project.featured);
+const FeaturedProjects = async () => {  // ← Add 'async'
+  const allProjects = await getAllProjects();  // ← Fetch directly
+  const featuredProjects = allProjects.filter(project => project.featured);
 
   return (
     <section className="container mx-auto px-6">

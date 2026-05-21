@@ -1,0 +1,167 @@
+{
+  "pembe-safaris": {
+    "title": "Pembe Safaris",
+    "longDescription": "Full-stack safari booking platform featuring destination exploration, package booking, payment integration, and user reviews. Includes interactive maps, itinerary builder, and real-time availability tracking.",
+    "technologies": ["TypeScript", "React", "Next.js", "Tailwind CSS", "Vercel"],
+    "liveUrl": "https://pembe-safaris.vercel.app",
+    "category": "fullstack",
+    "featured": true,
+    "imageUrl": "/projects/pembe-safaris.png",
+    "challenges": ["Complex booking logic with real-time availability", "Payment gateway integration", "Mobile-responsive optimization"],
+    "solutions": ["Redis caching for availability", "Stripe Connect integration", "Next.js Image optimization"]
+  },
+  "MIBS-STEEL": {
+    "title": "MIBS STEEL",
+    "longDescription": "Corporate website for steel manufacturing company featuring product catalog, quote request system, and company portfolio.",
+    "technologies": ["TypeScript", "React", "Next.js", "Tailwind CSS"],
+    "liveUrl": "https://mibs-steel.vercel.app",
+    "category": "fullstack",
+    "featured": false,
+    "imageUrl": "/projects/mibs-steel.png"
+  },
+  "campus-market": {
+    "title": "Campus Market",
+    "longDescription": "Full-stack campus commerce platform with geolocation-based product discovery, secure messaging, and campus email verification.",
+    "technologies": ["TypeScript", "React", "Node.js", "Express", "MongoDB", "Socket.io"],
+    "liveUrl": "https://campus-market-dun.vercel.app",
+    "category": "fullstack",
+    "featured": true,
+    "imageUrl": "/projects/campus-market.png"
+  },
+  "campus-market-backend": {
+    "title": "Campus Market Backend",
+    "technologies": ["Node.js", "Express", "TypeScript", "MongoDB", "Socket.io", "JWT"],
+    "category": "backend",
+    "featured": false
+  },
+  "med-assistant-front": {
+    "title": "Medical Assistant Platform",
+    "technologies": ["TypeScript", "React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+    "category": "fullstack",
+    "featured": true
+  },
+  "med-assistant-backend": {
+    "title": "Medical Assistant Backend",
+    "technologies": ["JavaScript", "Node.js", "Express", "MongoDB", "JWT"],
+    "category": "backend",
+    "featured": false
+  },
+  "mombasaStays-frontend": {
+    "title": "Mombasa Stays",
+    "technologies": ["TypeScript", "React", "Tailwind CSS"],
+    "category": "frontend",
+    "featured": false
+  },
+  "mombasaStays-backend": {
+    "title": "Mombasa Stays Backend",
+    "technologies": ["Node.js", "Express", "MongoDB", "JWT"],
+    "category": "backend",
+    "featured": false
+  },
+  "blindAID": {
+    "title": "BlindAID",
+    "longDescription": "Android accessibility app assisting visually impaired users with navigation and object recognition using voice commands and haptic feedback.",
+    "technologies": ["Kotlin", "Android SDK", "Camera2 API", "ML Kit", "Text-to-Speech"],
+    "category": "mobile",
+    "featured": true,
+    "imageUrl": "/projects/blindaid.png"
+  },
+  "musicPlayer": {
+    "title": "Music Player",
+    "technologies": ["Kotlin", "Android SDK", "ExoPlayer", "Room Database"],
+    "category": "mobile",
+    "featured": false
+  },
+  "Expo-Music-Player-V2": {
+    "title": "Expo Music Player",
+    "technologies": ["TypeScript", "React Native", "Expo", "Expo AV"],
+    "category": "mobile",
+    "featured": false
+  },
+  "Brain-Tumor-Classification": {
+    "title": "Brain Tumor Classification",
+    "longDescription": "CNN model that classifies brain MRI images into tumor categories using transfer learning and ensemble methods.",
+    "technologies": ["Python", "TensorFlow", "Keras", "OpenCV", "NumPy"],
+    "category": "ml",
+    "featured": true,
+    "imageUrl": "/projects/brain-tumor.png"
+  },
+  "Brain-Tumor-Classification-Web": {
+    "title": "Brain Tumor Classification Web",
+    "technologies": ["TypeScript", "React", "TensorFlow.js"],
+    "category": "frontend",
+    "featured": false
+  },
+  "startup-success-predictor": {
+    "title": "Startup Success Predictor",
+    "technologies": ["Python", "Streamlit", "Scikit-learn", "XGBoost", "SHAP"],
+    "category": "ml",
+    "featured": true
+  },
+  "Diagnosis_Api": {
+    "title": "Diagnosis Intelligence API",
+    "technologies": ["Python", "FastAPI", "Pydantic", "Docker"],
+    "category": "backend",
+    "featured": false
+  },
+  "CommerceFront": {
+    "title": "E-Commerce Frontend",
+    "technologies": ["CSS", "HTML", "JavaScript"],
+    "category": "frontend",
+    "featured": false
+  },
+  "CommerceApi": {
+    "title": "E-Commerce API",
+    "technologies": ["C#", ".NET Core", "Entity Framework", "SQL Server"],
+    "category": "backend",
+    "featured": false
+  },
+  "Student-Management-system-Frontend": {
+    "title": "Student Management Dashboard",
+    "technologies": ["JavaScript", "React", "Chart.js"],
+    "category": "frontend",
+    "featured": false
+  },
+  "Student-Records-Management-API": {
+    "title": "Student Records API",
+    "technologies": ["C#", ".NET Core", "Entity Framework", "SQL Server"],
+    "category": "backend",
+    "featured": false
+  },
+  "juniormsyoka-RealEstateFrontEnd": {
+    "title": "Real Estate Platform",
+    "technologies": ["JavaScript", "CSS3", "Mapbox GL"],
+    "category": "frontend",
+    "featured": false
+  },
+  "juniormsyoka-elegantscales-portfolio": {
+    "title": "ElegantScales Portfolio",
+    "technologies": ["TypeScript", "React", "Tailwind CSS", "Framer Motion"],
+    "category": "frontend",
+    "featured": false
+  },
+  "portfolio": {
+    "title": "Portfolio Website",
+    "technologies": ["TypeScript", "React", "CSS Modules"],
+    "category": "frontend",
+    "featured": false
+  },
+  "docs": {
+    "title": "Documentation Site",
+    "technologies": ["MDX", "Next.js", "TypeScript", "Tailwind CSS"],
+    "category": "frontend",
+    "featured": false
+  },
+  "flight-cancellation": {
+    "title": "Flight Cancellation Predictor",
+    "technologies": ["Python", "Pandas", "Scikit-learn", "XGBoost"],
+    "category": "ml",
+    "featured": false
+  },
+  "Web-BackEnd-": {
+    "title": "Web Backend Services",
+    "technologies": ["Node.js", "Express", "JWT", "Multer"],
+    "category": "backend",
+    "featured": false
+  }
+}
