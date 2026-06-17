@@ -1,42 +1,36 @@
-/* src/app/globals.css - UPDATED FOR V4 */
+/* src/app/globals.css - Updated to match redesign */
 @import "tailwindcss";
 
-/* Define your custom theme */
 @theme {
-  /* Colors */
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f3f4f6;
-  --color-gray-200: #e5e7eb;
-  --color-gray-300: #d1d5db;
-  --color-gray-400: #9ca3af;
-  --color-gray-500: #6b7280;
-  --color-gray-600: #4b5563;
-  --color-gray-700: #374151;
-  --color-gray-800: #1f2937;
-  --color-gray-900: #111827;
-  --color-gray-950: #030712;
-  
-  --color-blue-500: #3b82f6;
-  --color-blue-600: #2563eb;
-  --color-blue-700: #1d4ed8;
-  
-  --color-purple-500: #8b5cf6;
-  --color-purple-600: #7c3aed;
-  
-  --color-green-500: #10b981;
+  /* Colors - Redesign palette */
+  --color-bg: #0D0C0B;
+  --color-surface: #161411;
+  --color-surface2: #1E1B17;
+  --color-coral: #E8613A;
+  --color-amber: #C4803A;
+  --color-text: #F0EDE8;
+  --color-muted: #9A9186;
+  --color-border: rgba(240,237,232,0.08);
   
   /* Fonts */
-  --font-sans: ui-sans-serif, system-ui, sans-serif, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  
-  /* Spacing */
-  --spacing: 0.25rem; /* 1 = 0.25rem = 4px */
+  --font-syne: 'Syne', sans-serif;
+  --font-inter: 'Inter', sans-serif;
 }
 
-/* Base styles */
 @layer base {
   :root {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --bg: #0D0C0B;
+    --surface: #161411;
+    --surface2: #1E1B17;
+    --coral: #E8613A;
+    --amber: #C4803A;
+    --text: #F0EDE8;
+    --muted: #9A9186;
+    --border: rgba(240,237,232,0.08);
+  }
+  
+  * {
+    border-color: var(--border);
   }
   
   html {
@@ -44,20 +38,18 @@
   }
   
   body {
-    background: var(--color-gray-950);
-    color: var(--color-gray-100);
-    font-family: var(--font-sans);
-  }
-  
-  * {
-    border-color: var(--color-gray-800);
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    min-height: 100vh;
   }
 }
 
-/* Custom utilities */
 @layer utilities {
   .gradient-text {
-    background: linear-gradient(to right, var(--color-blue-500), var(--color-purple-600));
+    background: linear-gradient(to right, var(--coral), var(--amber));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -65,25 +57,25 @@
   
   .glass-effect {
     backdrop-filter: blur(12px);
-    background: rgba(3, 7, 18, 0.8); /* gray-950 with opacity */
-    border: 1px solid var(--color-gray-800);
+    background: rgba(13, 12, 11, 0.88);
+    border: 1px solid var(--border);
   }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-gray-900);
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-gray-800);
-  border-radius: 5px;
+  background: var(--surface2);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-gray-700);
+  background: var(--coral);
 }

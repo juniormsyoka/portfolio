@@ -23,7 +23,7 @@
     "title": "Campus Market",
     "longDescription": "Full-stack campus commerce platform with geolocation-based product discovery, secure messaging, and campus email verification.",
     "technologies": ["TypeScript", "React", "Node.js", "Express", "MongoDB", "Socket.io"],
-    "liveUrl": "https://campus-market-dun.vercel.app",
+    "liveUrl": "https://campus-markett.vercel.app/",
     "category": "fullstack",
     "featured": true,
     "imageUrl": "/projects/campus-market.png"
@@ -94,7 +94,7 @@
   },
   "startup-success-predictor": {
     "title": "Startup Success Predictor",
-    "technologies": ["Python", "Streamlit", "Scikit-learn", "XGBoost", "SHAP"],
+    "technologies": ["Python", "Streamlit", "Scikit-learn", "XGBoost", "Pandas"],
     "category": "ml",
     "featured": true
   },

@@ -1,72 +1,62 @@
-import { Code, Server, Database, Smartphone, Cpu, Layout } from 'lucide-react';
+'use client';
 
 const Skills = () => {
-  const skillCategories = [
+  const skillClusters = [
     {
-      title: 'Frontend',
-      icon: Layout,
-      skills: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Redux'],
-      color: 'from-blue-500 to-cyan-500',
+      label: 'Frontend',
+      skills: ['React', 'TypeScript', 'Next.js', 'Tailwind', 'Redux'],
     },
     {
-      title: 'Backend',
-      icon: Server,
-      skills: ['Node.js', 'ASP.NET', 'Nest JS', 'REST APIs', 'Authentication'],
-      color: 'from-green-500 to-emerald-500',
+      label: 'Android',
+      skills: ['Jetpack Compose', 'Kotlin', 'Material 3', 'MVVM'],
     },
     {
-      title: 'Database',
-      icon: Database,
-      skills: ['SQL', 'SQLite', 'Supabase', 'PostgreSQL', 'Database Design', 'Authentication', 'Row-Level Security'],
-      color: 'from-purple-500 to-pink-500',
+      label: 'Backend',
+      skills: ['Node.js', 'ASP.NET', 'NestJS', 'REST APIs', 'C#'],
     },
     {
-      title: 'Mobile',
-      icon: Smartphone,
-      skills: ['React Native', 'Expo', 'iOS/Android', 'Mobile UI', 'APIs'],
-      color: 'from-orange-500 to-red-500',
+      label: 'Data & ML',
+      skills: ['Python', 'TensorFlow', 'scikit-learn', 'LightGBM', 'Streamlit'],
     },
     {
-      title: 'Tools',
-      icon: Cpu,
-      skills: ['Git', 'GitHub', 'VS Code', 'Swagger UI', 'Vercel'],
-      color: 'from-gray-500 to-gray-700',
+      label: 'Database',
+      skills: ['PostgreSQL', 'SQL Server', 'Supabase', 'SQLite', 'MongoDB'],
+    },
+    {
+      label: 'Tools',
+      skills: ['Git / GitHub', 'Vercel', 'Swagger', 'VS Code', 'Android Studio'],
     },
   ];
 
   return (
-    <section className="container mx-auto px-6">
-      <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-        Technical Skills
+    <section id="skills" className="max-w-[1200px] mx-auto px-6 py-20 border-t border-[rgba(240,237,232,0.08)]">
+      <p className="text-[0.75rem] tracking-[0.18em] uppercase text-[#E8613A] mb-3">
+        Tech stack
+      </p>
+      <h2 className="font-syne text-[clamp(1.8rem,3.5vw,2.5rem)] font-extrabold tracking-[-0.025em] mb-1">
+        What I work with
       </h2>
-      
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {skillCategories.map((category, index) => (
+      <p className="text-[#9A9186] mb-12 max-w-[500px]">
+        Tools and technologies I reach for to build things well.
+      </p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {skillClusters.map((cluster) => (
           <div
-            key={category.title}
-            className="bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800 rounded-xl p-6"
+            key={cluster.label}
+            className="bg-[#161411] border border-[rgba(240,237,232,0.08)] rounded-lg p-6"
           >
-            <div className="flex items-center mb-4">
-              <div className={`p-3 rounded-lg bg-gradient-to-r ${category.color}`}>
-                <category.icon className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="ml-4 text-xl font-bold">{category.title}</h3>
-            </div>
-            
-            <div className="space-y-3">
-              {category.skills.map((skill) => (
-                <div
+            <p className="text-[0.7rem] tracking-[0.15em] uppercase text-[#C4803A] mb-4">
+              {cluster.label}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {cluster.skills.map((skill) => (
+                <span
                   key={skill}
-                  className="flex items-center justify-between bg-gray-900/50 px-4 py-2 rounded-lg"
+                  className="text-[0.78rem] px-3 py-1 border border-[rgba(240,237,232,0.08)] rounded-full text-[#F0EDE8] bg-[#1E1B17]"
                 >
-                  <span className="text-gray-300">{skill}</span>
-                  <div className="h-2 w-16 bg-gray-800 rounded-full overflow-hidden">
-                    <div 
-                      className={`h-full bg-gradient-to-r ${category.color} rounded-full`}
-                      style={{ width: `${80 + Math.random() * 20}%` }}
-                    />
-                  </div>
-                </div>
+                  {skill}
+                </span>
               ))}
             </div>
           </div>

@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, Send, CheckCircle } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +15,6 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API call
     setTimeout(() => {
       console.log('Form submitted:', formData);
       setIsSubmitting(false);
@@ -35,166 +32,92 @@ const Contact = () => {
     });
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: 'Email',
-      value: 'juniormsyoka35@gmail.com',
-      href: 'mailto:juniormsyoka35@gmail.com',
-    },
-    {
-      icon: MapPin,
-      title: 'Location',
-      value: 'Nairobi, Kenya',
-      href: '#',
-    },
-    {
-      icon: Phone,
-      title: 'Phone',
-      value: '+254 748 579 736',
-      href: 'tel:+2547XXXXXXXXX',
-    },
+  const contactItems = [
+    { label: 'Email', value: 'juniormsyoka35@gmail.com' },
+    { label: 'Location', value: 'Mombasa, Kenya' },
+    { label: 'Phone', value: '+254 748 579 736' },
+    { label: 'GitHub', value: 'github.com/juniormsyoka' },
+    { label: 'Availability', value: 'Open to opportunities', highlight: true },
   ];
 
   return (
-    <section id="contact" className="container mx-auto px-6">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
-        <p className="text-gray-400 max-w-2xl mx-auto">
-          Have a project in mind or want to discuss potential opportunities?
-          I'd love to hear from you!
-        </p>
-      </div>
+    <section id="contact" className="max-w-[1200px] mx-auto px-6 py-20 border-t border-[rgba(240,237,232,0.08)]">
+      <p className="text-[0.75rem] tracking-[0.18em] uppercase text-[#E8613A] mb-3">
+        Contact
+      </p>
+      <h2 className="font-syne text-[clamp(1.8rem,3.5vw,2.5rem)] font-extrabold tracking-[-0.025em] mb-1">
+        Let's build something
+      </h2>
+      <p className="text-[#9A9186] mb-12 max-w-[500px]">
+        Open to full-time roles, internships, and interesting freelance projects.
+      </p>
 
-      <div className="grid lg:grid-cols-2 gap-12">
-        {/* Contact Information */}
-        <div>
-          <h3 className="text-2xl font-bold mb-8">Contact Information</h3>
-          <div className="space-y-6">
-            {contactInfo.map((info, index) => (
-              <motion.div
-                key={info.title}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="flex items-start space-x-4 p-4 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-blue-500 transition-colors"
-              >
-                <div className="p-3 rounded-lg bg-blue-900/30">
-                  <info.icon className="h-6 w-6 text-blue-400" />
-                </div>
-                <div>
-                  <h4 className="font-semibold">{info.title}</h4>
-                  <a
-                    href={info.href}
-                    className="text-gray-400 hover:text-blue-400 transition-colors"
-                  >
-                    {info.value}
-                  </a>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Availability */}
-          <div className="mt-12 p-6 rounded-xl bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800">
-            <h4 className="font-bold text-lg mb-4">Current Availability</h4>
-            <div className="flex items-center">
-              <div className="h-3 w-3 rounded-full bg-green-500 animate-pulse mr-3" />
-              <span className="text-gray-300">Open for freelance projects</span>
-            </div>
-            <p className="mt-4 text-gray-400 text-sm">
-              I'm currently available for contract work, freelance projects,
-              and full-time opportunities.
-            </p>
-          </div>
-        </div>
-
-        {/* Contact Form */}
-        <div className="bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800 rounded-2xl p-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-gray-900/50 border border-gray-800 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-                placeholder="Your name"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-gray-900/50 border border-gray-800 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-                placeholder="your.email@example.com"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows={4}
-                className="w-full px-4 py-3 bg-gray-900/50 border border-gray-800 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none"
-                placeholder="Tell me about your project..."
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={`w-full py-3 rounded-lg font-semibold transition-all flex items-center justify-center ${
-                isSubmitted
-                  ? 'bg-green-600'
-                  : 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700'
-              } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:scale-[1.02] active:scale-[0.98]'}`}
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.2fr] gap-16 items-start">
+        {/* Contact Info */}
+        <div className="flex flex-col gap-6">
+          {contactItems.map((item) => (
+            <div
+              key={item.label}
+              className="flex gap-4 items-start pb-6 border-b border-[rgba(240,237,232,0.08)] last:border-b-0"
             >
-              {isSubmitting ? (
-                <>
-                  <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-3" />
-                  Sending...
-                </>
-              ) : isSubmitted ? (
-                <>
-                  <CheckCircle className="mr-2 h-5 w-5" />
-                  Message Sent!
-                </>
-              ) : (
-                <>
-                  <Send className="mr-2 h-5 w-5" />
-                  Send Message
-                </>
-              )}
-            </button>
-          </form>
-
-          <div className="mt-8 pt-6 border-t border-gray-800">
-            <p className="text-gray-400 text-sm">
-              I typically respond within 24 hours. For urgent matters, please include
-              "URGENT" in your message subject.
-            </p>
-          </div>
+              <span className="w-2 h-2 rounded-full bg-[#E8613A] mt-2 flex-shrink-0" />
+              <div>
+                <p className="text-[0.75rem] text-[#9A9186] tracking-[0.08em] uppercase">
+                  {item.label}
+                </p>
+                <p className={`font-medium mt-0.5 text-[0.95rem] text-[#F0EDE8] ${item.highlight ? 'text-[#C4803A]' : ''}`}>
+                  {item.value}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <div className="form-field">
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your name"
+              className="w-full bg-[#161411] border border-[rgba(240,237,232,0.08)] rounded-lg px-4 py-3.5 text-[#F0EDE8] font-inter text-[0.9rem] outline-none transition-colors focus:border-[#E8613A] placeholder:text-[#9A9186]"
+              required
+            />
+          </div>
+          <div className="form-field">
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="your@email.com"
+              className="w-full bg-[#161411] border border-[rgba(240,237,232,0.08)] rounded-lg px-4 py-3.5 text-[#F0EDE8] font-inter text-[0.9rem] outline-none transition-colors focus:border-[#E8613A] placeholder:text-[#9A9186]"
+              required
+            />
+          </div>
+          <div className="form-field">
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Tell me about your project or opportunity…"
+              rows={4}
+              className="w-full bg-[#161411] border border-[rgba(240,237,232,0.08)] rounded-lg px-4 py-3.5 text-[#F0EDE8] font-inter text-[0.9rem] outline-none transition-colors focus:border-[#E8613A] placeholder:text-[#9A9186] resize-vertical min-h-[120px]"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className={`bg-[#E8613A] text-white border-none px-7 py-3.5 font-syne font-semibold text-[0.9rem] rounded transition-all hover:bg-[#d4522e] hover:-translate-y-px self-start ${
+              isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
+          >
+            {isSubmitting ? 'Sending...' : isSubmitted ? '✓ Sent!' : 'Send message →'}
+          </button>
+        </form>
       </div>
     </section>
   );
