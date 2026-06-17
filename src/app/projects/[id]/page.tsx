@@ -1,80 +1,59 @@
-// src/app/projects/[id]/page.tsx
-'use client';
-
-import { notFound, useParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
-import { projects } from '@/app/lib/Projects'; // ← CAPITAL P
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { 
-  ArrowLeft, 
-  ExternalLink, 
-  Github, 
+import { getAllProjects, getProjectById } from '@/app/lib/getProjects';
+import { Project } from '@/app/lib/Projects';
+import {
+  ArrowLeft,
+  ExternalLink,
+  Github,
   Code,
   Server,
   Smartphone,
   Layout,
   Brain,
-  Cpu
+  Cpu,
 } from 'lucide-react';
 
-// Type for project
-interface ProjectType {
-  id: number;
-  title: string;
-  description: string;
-  longDescription: string;
-  technologies: string[];
-  githubUrl: string;
-  liveUrl?: string;
-  category: string;
-  featured: boolean;
-  imageUrl: string;
-  challenges: string[];
-  solutions: string[];
+interface ProjectDetailPageProps {
+  params: {
+    id: string;
+  };
 }
 
-export default function ProjectDetailPage() {
-  const params = useParams();
-  const id = params?.id as string;
-  
-  const [project, setProject] = useState<ProjectType | null>(null);
-  const [loading, setLoading] = useState(true);
-  
-  useEffect(() => {
-    if (!id) return;
-    
-    const foundProject = projects.find(p => p.id === parseInt(id));
-    setProject(foundProject || null);
-    setLoading(false);
-  }, [id]);
+function getCategoryIcon(category: string) {
+  switch (category) {
+    case 'fullstack':
+      return Code;
+    case 'mobile':
+      return Smartphone;
+    case 'backend':
+      return Server;
+    case 'frontend':
+      return Layout;
+    case 'ml':
+      return Brain;
+    default:
+      return Cpu;
+  }
+}
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto"></div>
-          <p className="mt-4 text-gray-400">Loading project...</p>
-        </div>
-      </div>
-    );
+export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
+  const id = parseInt(params.id, 10);
+  if (Number.isNaN(id)) {
+    notFound();
   }
 
+  const project = await getProjectById(id);
   if (!project) {
     notFound();
   }
 
-  // Simple category mapping
-  const getCategoryIcon = (category: string) => {
-    switch(category) {
-      case 'fullstack': return Code;
-      case 'mobile': return Smartphone;
-      case 'backend': return Server;
-      case 'frontend': return Layout;
-      case 'ml': return Brain;
-      default: return Cpu;
-    }
-  };
+  const relatedProjects = (await getAllProjects())
+    .filter((p) => p.category === project.category && p.id !== project.id)
+    .slice(0, 2);
 
+  const projectChallenges = project.challenges ?? [];
+  const projectSolutions = project.solutions ?? [];
   const CategoryIcon = getCategoryIcon(project.category);
 
   return (
@@ -148,7 +127,7 @@ export default function ProjectDetailPage() {
             <div className="mb-8">
               <h2 className="text-2xl font-bold mb-6">Technical Implementation</h2>
               <div className="space-y-6">
-                {project.challenges.map((challenge: string, index: number) => (
+                {projectChallenges.map((challenge, index) => (
                   <div key={index} className="p-6 bg-gray-900/50 rounded-xl border border-gray-800">
                     <div className="mb-4">
                       <div className="flex items-center mb-2">
@@ -162,7 +141,7 @@ export default function ProjectDetailPage() {
                         <div className="h-2 w-2 bg-green-500 rounded-full mr-3"></div>
                         <h3 className="font-semibold text-lg">Solution</h3>
                       </div>
-                      <p className="text-gray-300 ml-5">{project.solutions[index]}</p>
+                      <p className="text-gray-300 ml-5">{projectSolutions[index] ?? 'Solution details coming soon.'}</p>
                     </div>
                   </div>
                 ))}
@@ -212,19 +191,16 @@ export default function ProjectDetailPage() {
             <div className="p-6 bg-gray-900/50 rounded-xl border border-gray-800">
               <h3 className="text-xl font-bold mb-4">Similar Projects</h3>
               <div className="space-y-3">
-                {projects
-                  .filter(p => p.category === project.category && p.id !== project.id)
-                  .slice(0, 2)
-                  .map((related) => (
-                    <Link
-                      key={related.id}
-                      href={`/projects/${related.id}`}
-                      className="block p-3 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors"
-                    >
-                      <div className="font-medium mb-1">{related.title}</div>
-                      <div className="text-sm text-gray-400 truncate">{related.description}</div>
-                    </Link>
-                  ))}
+                {relatedProjects.map((related) => (
+                  <Link
+                    key={related.id}
+                    href={`/projects/${related.id}`}
+                    className="block p-3 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors"
+                  >
+                    <div className="font-medium mb-1">{related.title}</div>
+                    <div className="text-sm text-gray-400 truncate">{related.description}</div>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

@@ -37,7 +37,7 @@ const projectsData = [
     tag: 'Full-Stack',
     title: 'Medical Assistant Platform',
     description: 'HIPAA-compliant healthcare management system for clinics — appointment scheduling, records, and patient communication in one platform.',
-    stack: ['React', 'TypeScript', 'Node.js', 'MongoDB'],
+    stack: ['React', 'TypeScript', 'Node.js', 'postgreSQL', 'Tailwind CSS'],
     github: 'https://github.com/juniormsyoka/med-assistant-front',
     live: 'https://medical-assistant-demo.vercel.app',
   },

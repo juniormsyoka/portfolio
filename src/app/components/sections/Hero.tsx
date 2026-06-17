@@ -34,7 +34,7 @@ const Hero = () => {
 
         {/* Bio */}
         <p className="text-[#9A9186] max-w-[460px] mb-8 text-[0.95rem] leading-relaxed">
-          Final-year CS student at TU Mombasa building full-stack web apps, Android experiences, 
+          Final-year CS student at Technical University of Mombasa building full-stack web apps, Android experiences, 
           and ML-powered tools. Passionate about clean architecture and real-world impact.
         </p>
 

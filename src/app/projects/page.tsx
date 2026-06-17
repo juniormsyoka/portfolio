@@ -1,25 +1,57 @@
 // app/projects/page.tsx
 'use client';
 
-import { useState, useMemo } from 'react';
-import { projects } from '@/app/lib/Projects';
+import { useState, useMemo, useEffect, type ComponentType } from 'react';
+import { Project } from '@/app/lib/Projects';
 import ProjectCard from '@/app/components/projects/ProjectCard';
 import { Filter, Code, Smartphone, Server, Layout, Brain } from 'lucide-react';
 
 type Category = 'all' | 'fullstack' | 'mobile' | 'backend' | 'frontend' | 'ml';
 
-export default function ProjectsPage() {
-  const [selectedCategory, setSelectedCategory] = useState<Category>('all');
+type CategoryItem = {
+  id: Category;
+  label: string;
+  icon: ComponentType<{ className?: string }>;
+  color: string;
+};
 
-  // Filter projects based on selected category
+const categoriesData: CategoryItem[] = [
+  { id: 'all', label: 'All', icon: Filter, color: 'bg-gray-700 hover:bg-gray-600' },
+  { id: 'fullstack', label: 'Full-Stack', icon: Code, color: 'bg-blue-600 hover:bg-blue-700' },
+  { id: 'mobile', label: 'Mobile', icon: Smartphone, color: 'bg-green-600 hover:bg-green-700' },
+  { id: 'backend', label: 'Backend', icon: Server, color: 'bg-purple-600 hover:bg-purple-700' },
+  { id: 'frontend', label: 'Frontend', icon: Layout, color: 'bg-cyan-600 hover:bg-cyan-700' },
+  { id: 'ml', label: 'ML/AI', icon: Brain, color: 'bg-orange-600 hover:bg-orange-700' },
+];
+
+export default function ProjectsPage() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<Category>('all');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const response = await fetch('/api/projects');
+        const data = (await response.json()) as Project[];
+        setProjects(data);
+      } catch (error) {
+        console.error('Failed to load projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    void fetchProjects();
+  }, []);
+
   const filteredProjects = useMemo(() => {
     if (selectedCategory === 'all') return projects;
-    return projects.filter(project => project.category === selectedCategory);
-  }, [selectedCategory]);
+    return projects.filter((project) => project.category === selectedCategory);
+  }, [selectedCategory, projects]);
 
-  // Count projects by category
   const categoryCounts = useMemo(() => {
-    const counts = {
+    const counts: Record<Category, number> = {
       all: projects.length,
       fullstack: 0,
       mobile: 0,
@@ -27,22 +59,18 @@ export default function ProjectsPage() {
       frontend: 0,
       ml: 0,
     };
-    
-    projects.forEach(project => {
+
+    projects.forEach((project) => {
       counts[project.category]++;
     });
-    
-    return counts;
-  }, []);
 
-  const categories = [
-    { id: 'all', label: 'All', icon: Filter, count: categoryCounts.all, color: 'bg-gray-700 hover:bg-gray-600' },
-    { id: 'fullstack', label: 'Full-Stack', icon: Code, count: categoryCounts.fullstack, color: 'bg-blue-600 hover:bg-blue-700' },
-    { id: 'mobile', label: 'Mobile', icon: Smartphone, count: categoryCounts.mobile, color: 'bg-green-600 hover:bg-green-700' },
-    { id: 'backend', label: 'Backend', icon: Server, count: categoryCounts.backend, color: 'bg-purple-600 hover:bg-purple-700' },
-    { id: 'frontend', label: 'Frontend', icon: Layout, count: categoryCounts.frontend, color: 'bg-cyan-600 hover:bg-cyan-700' },
-    { id: 'ml', label: 'ML/AI', icon: Brain, count: categoryCounts.ml, color: 'bg-orange-600 hover:bg-orange-700' },
-  ];
+    return counts;
+  }, [projects]);
+
+  const categories = categoriesData.map((category) => ({
+    ...category,
+    count: categoryCounts[category.id],
+  }));
 
   return (
     <div className="min-h-screen py-12">

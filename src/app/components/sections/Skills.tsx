@@ -20,7 +20,7 @@ const Skills = () => {
     },
     {
       label: 'Database',
-      skills: ['PostgreSQL', 'SQL Server', 'Supabase', 'SQLite', 'MongoDB'],
+      skills: ['PostgreSQL', 'SQL Server', 'Supabase', 'SQLite', 'Sql Server Management Studio' ],
     },
     {
       label: 'Tools',

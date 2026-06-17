@@ -33,4 +33,6 @@ export type ProjectOverride = {
   solutions?: string[];
 };
 
+
 export const defaultProjectImage = "/projects/placeholder.png";
+

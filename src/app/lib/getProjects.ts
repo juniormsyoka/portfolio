@@ -89,3 +89,8 @@ export async function getProjectByName(name: string): Promise<Project | undefine
   const all = await getAllProjects();
   return all.find(p => p.name === name);
 }
+export async function getProjectById(id: number): Promise<Project | undefined> {
+  const all = await getAllProjects();
+  return all.find((p) => p.id === id);
+}
+

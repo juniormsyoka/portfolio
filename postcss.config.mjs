@@ -1,7 +1,7 @@
-// postcss.config.mjs - KEEP THIS AS IS!
+// postcss.config.mjs
 const config = {
   plugins: {
-    "@tailwindcss/postcss": {},
+    "@tailwindcss/postcss": {}
   },
 };
 
